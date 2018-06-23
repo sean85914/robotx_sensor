@@ -1,0 +1,10 @@
+<launch>
+  <!-- GPS -->
+  <include file="$(find nmea_navsat_driver)/launch/nmea_serial_driver.launch"/>
+  <!-- IMU -->
+  <include file="$(find microstrain_3dm_gx5_45)/launch/microstrain_25.launch"/>
+  <!-- EKF -->
+  <include file="$(find robot_localization)/launch/wam_v_ekf.launch"/>
+  <!-- Navsat -->
+  <include file="$(finjd robot_localization)/launch/wam_v_navsat.launch"/>
+</launch>

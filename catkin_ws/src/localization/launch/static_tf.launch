@@ -1,0 +1,5 @@
+<launch>
+  <!-- Static transform -->
+  <node pkg="tf" type="static_transform_publisher" name="gps_link_broadcaster" args="0 -0.24 0.92 0 0 0 100 base_link gps 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="imu_link_broadcaster" args="0 -0.21 0.46 0 0 0 base_link imu_link 100"/>
+</launch>

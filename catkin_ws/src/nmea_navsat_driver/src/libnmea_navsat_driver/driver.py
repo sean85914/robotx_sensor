@@ -149,7 +149,7 @@ class RosNMEADriver(object):
                     longitude = -longitude
                 current_fix.longitude = longitude
 
-                current_fix.altitude = float('NaN')
+                current_fix.altitude =  0 #float('NaN')
                 current_fix.position_covariance_type = \
                     NavSatFix.COVARIANCE_TYPE_UNKNOWN
 
@@ -164,10 +164,10 @@ class RosNMEADriver(object):
                 current_vel = TwistWithCovarianceStamped()
                 current_vel.header.stamp = current_time
                 current_vel.header.frame_id = 'gps'
-                current_vel.twist.twist.linear.x = data['speed'] * \
-                    math.sin(data['true_course'])
-                current_vel.twist.twist.linear.y = data['speed'] * \
-                    math.cos(data['true_course'])
+                current_vel.twist.twist.linear.x = data['speed'] #* \
+                #math.sin(data['true_course'])
+                #current_vel.twist.twist.linear.y = data['speed'] #* \
+                #math.cos(data['true_course'])
 		# Edited by Sean
 		current_vel.twist.covariance[0] = 1.0 # X
 		current_vel.twist.covariance[6] = 1.0 # Y

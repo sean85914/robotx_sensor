@@ -1,4 +1,6 @@
 <launch>
+  <!-- Static transform -->
+  <include file="$(find localization)/launch/static_tf.launch"/>
   <!-- GPS -->
   <include file="$(find nmea_navsat_driver)/launch/nmea_serial_driver.launch"/>
   <!-- IMU -->
@@ -6,5 +8,7 @@
   <!-- EKF -->
   <include file="$(find robot_localization)/launch/wam_v_ekf.launch"/>
   <!-- Navsat -->
-  <include file="$(finjd robot_localization)/launch/wam_v_navsat.launch"/>
+  <include file="$(find robot_localization)/launch/wam_v_navsat.launch"/>
+  <!-- Visual -->
+  <node pkg="test" type="visual_path.py" name="visual_path" clear_params="true"/>
 </launch>

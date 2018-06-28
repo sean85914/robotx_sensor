@@ -1,5 +1,5 @@
 frequency: 30
-delay: 3.0
+delay: 0.1
 magnetic_declination_radians: 0.07662
 yaw_offset: 1.5704
 zero_altitude: true

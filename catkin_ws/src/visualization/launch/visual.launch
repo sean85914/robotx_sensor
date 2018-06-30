@@ -1,0 +1,4 @@
+<launch>
+  <node pkg="visualization" type="visual_path.py" name="visual_path" output="screen" clear_params="true"/>
+  <node pkg="visualization" type="visual_wps.py" name="visual_wps" output="screen" clear_params="true"/>
+</launch>

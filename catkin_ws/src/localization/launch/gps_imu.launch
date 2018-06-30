@@ -9,6 +9,8 @@
   <include file="$(find robot_localization)/launch/wam_v_ekf.launch"/>
   <!-- Navsat -->
   <include file="$(find robot_localization)/launch/wam_v_navsat.launch"/>
+  <!-- Set waypoints server -->
+  <include file="$(find localization)/launch/set_wps_server.launch"/>
   <!-- Visual -->
-  <node pkg="test" type="visual_path.py" name="visual_path" clear_params="true"/>
+  <include file="$(find visualization)/launch/visual.launch"/>
 </launch>

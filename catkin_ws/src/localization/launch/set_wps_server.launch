@@ -1,0 +1,4 @@
+<launch>
+  <node pkg="localization" type="set_wps_from_lonlat_server.py" name="set_wps_from_lonlat_server" output="screen" clear_params="true"/>
+  <node pkg="localization" type="set_wps_from_odom_server.py" name="set_wps_from_odom_server" output="screen" clear_params="true"/>
+</launch>

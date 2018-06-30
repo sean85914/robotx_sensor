@@ -1,0 +1,12 @@
+<launch>
+  <!-- Static transform -->
+  <include file="$(find localization)/launch/static_tf.launch"/>
+  <!-- EKF -->
+  <include file="$(find robot_localization)/launch/wam_v_ekf.launch"/>
+  <!-- Navsat -->
+  <include file="$(find robot_localization)/launch/wam_v_navsat.launch"/>
+  <!-- Set waypoints server -->
+  <include file="$(find localization)/launch/set_wps_server.launch"/>
+  <!-- Visual -->
+  <include file="$(find visualization)/launch/visual.launch"/>
+</launch>

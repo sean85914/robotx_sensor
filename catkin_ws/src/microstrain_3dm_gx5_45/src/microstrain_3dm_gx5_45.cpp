@@ -856,7 +856,17 @@ namespace Microstrain
 		default: break;
 		}
 	    }
-   
+   	  // Added by Sean
+	  // Add covariance
+	  imu_msg_.orientation_covariance[0] = 0.1;
+	  imu_msg_.orientation_covariance[3] = 0.1;
+	  imu_msg_.orientation_covariance[6] = 0.1;
+	  imu_msg_.angular_velocity_covariance[0] = 0.001;
+	  imu_msg_.angular_velocity_covariance[1] = 0.001;
+	  imu_msg_.angular_velocity_covariance[2] = 0.001;
+	  imu_msg_.linear_acceleration_covariance[0] = 0.3;
+	  imu_msg_.linear_acceleration_covariance[1] = 0.3;
+  	  imu_msg_.linear_acceleration_covariance[2] = 0.5;
 	  // Publish
 	  imu_pub_.publish(imu_msg_);
 

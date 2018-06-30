@@ -150,9 +150,13 @@ class RosNMEADriver(object):
                 current_fix.longitude = longitude
 
                 current_fix.altitude =  0 #float('NaN')
-                current_fix.position_covariance_type = \
-                    NavSatFix.COVARIANCE_TYPE_UNKNOWN
-
+	 	# Revised by Sean
+                #current_fix.position_covariance_type = \
+                    #NavSatFix.COVARIANCE_TYPE_UNKNOWN
+		current_fix.position_covariance[0] = 1.0
+		current_fix.position_covariance[3] = 1.0
+		current_fix.position_covariance_type = \
+			NavSatFix.COVARIANCE_TYPE_APPROXIMATED
                 self.fix_pub.publish(current_fix)
 
                 if not math.isnan(data['utc_time']):

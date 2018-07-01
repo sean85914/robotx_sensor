@@ -168,10 +168,16 @@ class RosNMEADriver(object):
                 current_vel = TwistWithCovarianceStamped()
                 current_vel.header.stamp = current_time
                 current_vel.header.frame_id = 'gps'
-                current_vel.twist.twist.linear.x = data['speed'] #* \
-                #math.sin(data['true_course'])
-                #current_vel.twist.twist.linear.y = data['speed'] #* \
-                #math.cos(data['true_course'])
+                current_vel.twist.twist.linear.x = data['speed'] * \
+                	math.sin(data['true_course'])
+                current_vel.twist.twist.linear.y = data['speed'] * \
+                	math.cos(data['true_course'])
+		#######################################################
+		#heading = math.degrees(data['true_course'])
+		#if heading < 0:
+			#heading += 360
+		#print "GPS heading: ", heading
+		#######################################################
 		# Edited by Sean
 		current_vel.twist.covariance[0] = 1.0 # X
 		current_vel.twist.covariance[6] = 1.0 # Y

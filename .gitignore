@@ -3,3 +3,4 @@ devel
 install
 *.bag
 *.catkin_workspace
+*.txt

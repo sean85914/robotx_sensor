@@ -21,7 +21,7 @@ def cb_imu(msg):
 	# Convert to branch [0, 360)
 	if heading_deg < 0:
 		heading_deg += 360
-	print heading_deg 
+	print "IMU heading: ", heading_deg 
 
 if __name__ == "__main__":
 	rospy.init_node('view_heading_node')

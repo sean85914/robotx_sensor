@@ -53,7 +53,7 @@ def pub_data():
 if __name__ == "__main__":
 	rospy.init_node('visual_waypoints_node')
 	global pub_marker
-	pub_marker = rospy.Publisher('waypoints', Marker, queue_size = 20)
+	pub_marker = rospy.Publisher('visual/waypoints', Marker, queue_size = 20)
 	rospy.Subscriber('/waypoints_odom', PoseArray, cb_odom, queue_size = 50)
 	rospy.Subscriber('/waypoints_lonlat', PoseArray, cb_lonlat, queue_size = 50)
 	rospy.spin()

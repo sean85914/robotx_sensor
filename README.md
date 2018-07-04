@@ -18,3 +18,10 @@ Using Vector V103 GPS and Microstrain 3DM-GX5-25 IMU to localize WAM-V
  $ catkin_make install
 ```
 
+## Make sure you can import utm in python
+```
+ $ pip install utm
+```
+
+
+

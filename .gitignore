@@ -1,6 +1,7 @@
 build
 devel
 install
+log
 *.bag
 *.catkin_workspace
 debug.txt

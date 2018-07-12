@@ -29,14 +29,13 @@ class VisualPath(object):
 		pose_.pose = msg.pose.pose
 		self.path.poses.append(pose_)
 		self.pub_path.publish(self.path)
-		self.pub_marker.publish(self.marker)
 		if self.debug:
 			self.marker.header = msg.header
 			point_ = Point()
 			point_ = msg.pose.pose.position
 			self.marker.points.append(point_)
 			self.marker.colors.append(ColorRGBA(0.5, 0.0, 1.0, 1.0))
-			
+			self.pub_marker.publish(self.marker)
 
 	
 if __name__ == "__main__":

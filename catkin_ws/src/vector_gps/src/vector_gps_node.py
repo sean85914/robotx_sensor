@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+# Revised by Sean based on nmea_navsat_driver
+# Combined both GGA and RMC sentences and published 
+# NavSatFix and Twist topics
+
 import rospy
 import serial
 import time
@@ -47,7 +51,7 @@ def read_data(first, second):
 	current_fix.altitude = elevation
 	current_fix.position_covariance[0] = hdop ** 2
 	current_fix.position_covariance[4] = hdop ** 2
-	current_fix.position_covariance[8] = (2 * hdop) ** 2
+	current_fix.position_covariance[8] = (2 * hdop) ** 2 #FIXME
 	current_fix.position_covariance_type = NavSatFix.COVARIANCE_TYPE_APPROXIMATED
 	current_vel.twist.twist.linear.x = speed * math.sin(true_course)
 	current_vel.twist.twist.linear.y = speed * math.cos(true_course)
@@ -78,10 +82,11 @@ if __name__ == "__main__":
 			data_2 = gps_.readline().strip()
 			data_1 = data_1.split(',')
 			data_2 = data_2.split(',')
-			# Make sure receive 'GGA' first
+			# Make sure receive 'GGA' first since the transmitted data are 
+			# GGA followed by RMC
 			if data_1[0][3:] == 'RMC':
 				_ = gps_.readline()
 			else:
 				read_data(data_1, data_2)
 	except rospy.ROSInterruptException:
-		GPS.close() #Close GPS serial port
+		gps.close() # Close GPS serial port

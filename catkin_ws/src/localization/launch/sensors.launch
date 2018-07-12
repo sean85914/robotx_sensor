@@ -4,5 +4,5 @@
   <!-- IMU -->
   <include file="$(find microstrain_3dm_gx5_45)/launch/microstrain_25.launch"/>
   <!-- Heading remap -->
-  <node pkg="localization" type="heading_remap.py" name="heading_remap_node" clear_params="true" output="screen">
+  <node pkg="localization" type="heading_remap.py" name="heading_remap_node" clear_params="true" output="screen"/>
 </launch>

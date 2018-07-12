@@ -9,4 +9,6 @@
   <include file="$(find localization)/launch/set_wps_server.launch"/>
   <!-- Visual -->
   <include file="$(find visualization)/launch/visual.launch"/>
+  <!-- RViz -->
+  <node pkg="rviz" type="rviz" name="rviz" args="$(find visualization)/rviz/localization.rviz"/>
 </launch>

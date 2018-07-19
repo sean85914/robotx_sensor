@@ -42,6 +42,7 @@ def read_data(first, second):
 	current_fix.status.status = fix_valid
 	current_fix.status.service = NavSatStatus.SERVICE_GPS
 	current_fix.header.stamp = rospy.Time.now()
+	current_vel.header.stamp = rospy.Time.now()
 	if latitude_direction == 'S':
 		latitude *= -1
 	if longitude_direction == 'W':

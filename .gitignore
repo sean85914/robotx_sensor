@@ -5,4 +5,4 @@ log
 *.bag
 *.pyc
 *.catkin_workspace
-debug.txt
+debug

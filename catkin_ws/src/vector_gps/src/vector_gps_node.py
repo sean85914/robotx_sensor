@@ -23,16 +23,19 @@ def read_data(first, second):
 	first = [x for x in first if x != '']
 	second = [x for x in second if x != '']
 	first_type = first[0][3:]
+	second_type = second[0][3:]
 	# GGA sentense length 15
 	# Make sure type is 'GGA'
-	if first_type == 'GGA' and len(first) >= 14:
+	# Print for debug
+	print first
+	print second
+	if first_type == 'GGA' and len(first) >= 14 and second_type == 'RMC' and len(second) >= 14:
 		fix_type, num_satellites, hdop, elevation = driver.handle_GGA(first)
 		unix_time, latitude, latitude_direction, longitude, longitude_direction, \
 		speed, true_course, fix_valid = driver.handle_RMC(second)
 	else:
 		rospy.loginfo("[%s] Wrong sentense length!  " %(rospy.get_name()))
-	print first
-	print second
+
 	# Not valid
 	if fix_valid == None:
 		rospy.loginfo("[%s] Invalid state! " %(rospy.get_name()))
@@ -54,10 +57,10 @@ def read_data(first, second):
 	current_fix.position_covariance[4] = hdop ** 2
 	current_fix.position_covariance[8] = (2 * hdop) ** 2 #FIXME
 	current_fix.position_covariance_type = NavSatFix.COVARIANCE_TYPE_APPROXIMATED
-	current_vel.twist.twist.linear.x = speed * math.sin(true_course)
-	current_vel.twist.twist.linear.y = speed * math.cos(true_course)
-	current_vel.twist.covariance[0] = 0.5 # TBD
-	current_vel.twist.covariance[7] = 0.5 # TBD
+	current_vel.twist.twist.linear.x = speed #* math.sin(true_course)
+	current_vel.twist.twist.linear.y = 0.0 #speed * math.cos(true_course)
+	current_vel.twist.covariance[0] = 5.0 # TBD
+	current_vel.twist.covariance[7] = 5.0 # TBD
 	pub_fix.publish(current_fix)
 	pub_vel.publish(current_vel)
 	rospy.loginfo("[%s] Fix and vel published!" %(rospy.get_name()))
@@ -76,7 +79,7 @@ if __name__ == "__main__":
 		current_fix = NavSatFix()
 		current_fix.header.frame_id = 'gps'
 		current_vel = TwistWithCovarianceStamped()
-		current_vel.header.frame_id = 'utm'
+		current_vel.header.frame_id = 'gps'
 	
 		while not rospy.is_shutdown():
 			data_1 = gps_.readline().strip()

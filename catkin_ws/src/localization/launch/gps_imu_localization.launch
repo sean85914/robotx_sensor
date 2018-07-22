@@ -10,5 +10,5 @@
   <!-- Visual -->
   <include file="$(find visualization)/launch/visual.launch"/>
   <!-- RViz -->
-  <node pkg="rviz" type="rviz" name="rviz" args="$(find visualization)/rviz/localization.rviz"/>
+  <!--node pkg="rviz" type="rviz" name="rviz" args="$(find visualization)/rviz/localization.rviz"/-->
 </launch>

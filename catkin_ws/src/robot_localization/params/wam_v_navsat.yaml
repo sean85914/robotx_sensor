@@ -1,7 +1,7 @@
-frequency: 30
+frequency: 20
 delay: 3.0
 magnetic_declination_radians: 0.07662
-yaw_offset: 1.5704
+yaw_offset: 0
 zero_altitude: true
 broadcast_utm_transform: true
 broadcast_utm_transform_as_parent_frame: true

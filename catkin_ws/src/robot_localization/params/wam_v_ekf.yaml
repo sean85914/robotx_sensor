@@ -1,4 +1,4 @@
-frequency: 20
+frequency: 10
 
 sensor_timeout: 0.1
 
@@ -10,7 +10,7 @@ publish_acceleration: false
 
 debug: false
 
-debug_out_file: /home/sean/robotx_sensor/catkin_ws/src/localization/debug/debug_1.txt
+debug_out_file: /home/sean/robotx_sensor/catkin_ws/src/localization/debug/debug1.txt
 
 print_diagnostics: false
 

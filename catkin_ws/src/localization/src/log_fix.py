@@ -3,7 +3,8 @@
 # Write the GPS reported longitude and latitude to a user-defined text file
 # You can visualize the data if you convert the file from txt to xlxs (Excel file)
 # and with the help of the website as below:
-# https://mygeodata.cloud/converter/
+# https://mygeodata.cloud/converter/ or 
+# http://www.gpsvisualizer.com/convert?output
 
 import rospy
 from sensor_msgs.msg import NavSatFix

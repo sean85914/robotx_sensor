@@ -33,6 +33,7 @@ def read_data(first, second):
 		fix_type, num_satellites, hdop, elevation = driver.handle_GGA(first)
 		unix_time, latitude, latitude_direction, longitude, longitude_direction, \
 		speed, true_course, fix_valid = driver.handle_RMC(second)
+		rospy.loginfo("[%s] True course: %f" %(rospy.get_name(), true_course))
 	else:
 		rospy.loginfo("[%s] Wrong sentense length!  " %(rospy.get_name()))
 
@@ -57,8 +58,8 @@ def read_data(first, second):
 	current_fix.position_covariance[4] = hdop ** 2
 	current_fix.position_covariance[8] = (2 * hdop) ** 2 #FIXME
 	current_fix.position_covariance_type = NavSatFix.COVARIANCE_TYPE_APPROXIMATED
-	current_vel.twist.twist.linear.x = speed #* math.sin(true_course)
-	current_vel.twist.twist.linear.y = 0.0 #speed * math.cos(true_course)
+	current_vel.twist.twist.linear.x =  speed #* math.sin(true_course)
+	current_vel.twist.twist.linear.y =  0.0 #speed * math.cos(true_course)
 	current_vel.twist.covariance[0] = 5.0 # TBD
 	current_vel.twist.covariance[7] = 5.0 # TBD
 	pub_fix.publish(current_fix)
